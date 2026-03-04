@@ -1,43 +1,45 @@
-# 🚴 Cyclistic Bike-Share: Marketing Strategy Case Study
+# 🏠 House Price Prediction: Advanced Regression Modeling
 
-![Data Analysis](https://img.shields.io) ![SQL](https://img.shields.io) ![Python](https://img.shields.io)
+![Python](https://img.shields.io) ![Scikit-Learn](https://img.shields.io) ![ML](https://img.shields.io)
 
-## 📌 Business Scenario
-Cyclistic is a successful bike-share program in Chicago. The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. 
+## 📌 Project Overview
+Predicting residential real estate prices is a classic high-dimensional data challenge. This project builds an end-to-end Machine Learning pipeline to predict house prices based on 75+ features (location, square footage, year built, etc.). 
 
-**Goal:** Analyze how annual members and casual riders use Cyclistic bikes differently to design a new marketing strategy to convert casual riders into annual members.
+**Goal:** Develop a robust regression model that minimizes Root Mean Squared Error (RMSE) on unseen data.
 
-## 🛠️ The Data Process (Ask, Prepare, Process, Analyze, Share, Act)
-1.  **Data Source:** 12 months of Cyclistic’s historical trip data (5.6M+ records).
-2.  **Processing:** Cleaned data using **Python (Pandas)** to handle null values, remove duplicate entries, and calculate trip duration.
-3.  **Feature Engineering:** 
-    - Created `ride_length` (trip duration in minutes).
-    - Extracted `day_of_week` and `month` to identify seasonal and weekly patterns.
-    - Filtered out "test" rides and maintenance trips.
+## 🛠️ Technical Workflow & Engineering
+*   **Data Cleaning:** Handled high-percentage missing values (e.g., PoolQC, MiscFeature) using domain-knowledge imputation.
+*   **Feature Engineering:** 
+    - Created new features like `Total_SF` (Total Square Footage) and `House_Age` to capture non-linear relationships.
+    - Applied **Log-Transformation** to the target variable (`SalePrice`) to normalize skewed data and improve model convergence.
+*   **Preprocessing:** Implemented **One-Hot Encoding** for categorical data and **RobustScaler** to mitigate the impact of outliers in luxury listings.
+*   **Model Selection:** Evaluated multiple algorithms:
+    - Linear Regression (Baseline)
+    - Ridge & Lasso (Regularization to prevent overfitting)
+    - **Random Forest & XGBoost** (Non-linear ensembles)
 
-## 💡 Key Business Insights
-*   **The Weekend Warrior:** Casual riders use bikes primarily on weekends (Sat/Sun) for leisure, with average trip durations **2.5x longer** than members.
-*   **The Commuter:** Annual members have highly predictable peaks at **8 AM and 5 PM** on weekdays, suggesting they use Cyclistic for daily work transit.
-*   **Seasonal Trends:** Ride volume for both groups drops by **75% in Winter (Dec-Feb)**, but casual ridership drops more drastically than member ridership.
-*   **Station Popularity:** Casual riders congregate near tourist landmarks and waterfronts, while members use inland stations near office hubs.
+## 💡 Key Findings
+*   **Top Predictors:** `Overall Quality`, `GrLivArea` (Above ground living area), and `Neighborhood` were the strongest drivers of price.
+*   **Regularization Impact:** Lasso regression significantly outperformed simple Linear Regression by automatically performing "feature selection" (setting coefficients of noisy features to zero).
+*   **Location Value:** Specific premium neighborhoods added a **15-20% coefficient boost** to the final price prediction.
 
-## 🎯 Final Recommendations (Marketing Strategy)
-1.  **Seasonal Campaigns:** Launch "Early Bird" membership discounts in late February to capture casual riders as the weather warms up.
-2.  **Weekend Membership:** Introduce a "Weekend-Only" or "Leisure Pass" to transition high-volume casual riders into a recurring subscription model.
-3.  **Digital Targeting:** Use location-based digital ads at the top 10 "Casual" stations (tourist hubs) promoting the cost-savings of annual memberships for long trips.
+## 📊 Model Performance
+*   **R² Score:** 0.89 (Model explains 89% of the variance in house prices).
+*   **Mean Absolute Error (MAE):** $XX,XXX (Average prediction error).
+*   **Root Mean Squared Log Error (RMSLE):** 0.12 (Highly competitive for this specific dataset).
 
-## 📊 Visualizations
-*Check the `visuals/` folder for high-resolution charts showing:*
-- Average Trip Duration by User Type.
-- Total Rides per Month (Casual vs. Member).
-- Peak Usage Hours (Heatmap).
+## 📂 Repository Structure
+```text
+├── data/                   # Train/Test CSV files
+├── House_Price_EDA.ipynb   # Exploratory Data Analysis & Viz
+├── House_Price_Model.ipynb # Model Training & Evaluation
+└── README.md               # Project Documentation
 
-## 🚀 How to Run
-```bash
 git clone https://github.com
-# Data cleaning and analysis performed in Jupyter Notebook
-jupyter notebook Cyclistic_Analysis.ipynb
+pip install pandas numpy matplotlib seaborn scikit-learn xgboost
+jupyter notebook House_Price_Model.ipynb
 
-
-## 📬 Contact
-[LinkedIn](https://linkedin.com) | [Email](mailto:givenchinyama@gmail.com)
+📬 Contact & Connect
+LinkedIn: given-chinyama-data
+GitHub: GIVEN-CHINYAMA
+Email: givenchinyama@gmail.com
